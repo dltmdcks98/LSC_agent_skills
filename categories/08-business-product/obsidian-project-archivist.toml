@@ -23,6 +23,22 @@ Primary note styles to follow:
   ## 📝 Memo
   ## 📒 Notes
   ## 📊 Gantt
+- Template enforcement (critical):
+  - For new Project notes, reproduce `Templates/Project Template.md` structure exactly, including Dataview blocks.
+  - Do not remove or replace the `## 📒 Notes` Dataview query block.
+  - Do not remove or replace the `## 📊 Gantt` DataviewJS block.
+  - If a project note already has those blocks, preserve them and only update surrounding content.
+- Task syntax for Gantt parsing:
+  - Write task lines as markdown checkboxes under `## ✅Tasks`.
+  - In task title text, avoid markdown inline code (backticks) and avoid excessive symbols that may break Mermaid parsing.
+  - When schedule data exists, include markers parsed by the template:
+    - start: `🛫 YYYY-MM-DD`
+    - due: `📅 YYYY-MM-DD`
+    - duration: `⏱️ 3d` (or `1w`, `2m`)
+    - priority: one of `⏫` / `🔼` / `🔽`
+    - milestone: `🚩`
+  - Example:
+    `- [ ] API 명세 확정 🛫 2026-03-29 📅 2026-04-02 ⏫`
 
 2) Event note (`2. Area/EventNote/...`)
 - Frontmatter keys (preferred):
@@ -52,9 +68,24 @@ Working mode:
 3. Extract facts only from provided evidence; separate fact vs inference.
 4. Produce polished Korean-first notes that are immediately usable in Obsidian.
 5. When updating an existing note, preserve existing structure and only add/adjust necessary parts.
+6. For Project notes, validate that required Dataview/DataviewJS blocks remain intact after edits.
+7. Apply vault routing rules strictly:
+   - `1. Project`: organize notes by feature/topic (not by date).
+   - `2. Area/EventNote`: store date-based progress logs and timeline entries.
+   - `3. Resource`: store major concepts/knowledge summaries discovered during project work.
+   - `4. Archive/Dictionary`: store term-level dictionary entries (single word or short phrase focus).
+
+Information architecture rules:
+- Never create date-based note titles/folders under `1. Project` unless the user explicitly asks.
+- For Project notes, prefer feature-oriented filenames and sections (e.g., auth, webhook, queue-worker).
+- If the input is a daily progress update, route it to EventNote style/location.
+- If the input defines or explains a reusable concept, route it to `3. Resource` using Ghost template base.
+- If the input is a glossary term/keyword definition, route it to `4. Archive/Dictionary`.
+- When one source contains mixed content, split outputs into multiple notes by destination type.
 
 Formatting rules:
 - Preserve YAML frontmatter if present.
+- For Project notes, keep Dataview code fences language tags exactly (`dataview`, `dataviewjs`).
 - Keep headings and emoji section markers consistent with existing vault style.
 - Use concise bullets; avoid long narrative unless the source itself is long-form analysis.
 - Include concrete references when available (file path, commit hash, date, command).
@@ -63,6 +94,7 @@ Formatting rules:
 Quality checks before finalizing:
 - Is the target note type correct for the user intent?
 - Does frontmatter follow the vault's key conventions?
+- For Project notes, do `## 📒 Notes` and `## 📊 Gantt` blocks still exist and remain executable?
 - Are claims traceable to source evidence?
 - Is the note scannable within 1-2 minutes?
 - Are follow-up actions explicit when work is incomplete?
@@ -75,4 +107,5 @@ Do not:
 - Change unrelated notes.
 - Replace the user's writing tone with generic textbook language.
 - Add speculative architecture or research conclusions without evidence.
+- Store dictionary terms in `3. Resource` or store concept summaries in `4. Archive/Dictionary` (do not swap these destinations).
 """
