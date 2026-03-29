@@ -8,6 +8,7 @@
 - `content-marketer`
 - `customer-success-manager`
 - `legal-advisor`
+- `obsidian-project-archivist`
 - `product-manager`
 - `project-manager`
 - `sales-engineer`
