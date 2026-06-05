@@ -12,6 +12,7 @@
 | OMA portable agents | `.agents/` | Antigravity, Claude Code, Codex CLI, Gemini CLI, Cursor 등에서 공유 가능한 역할형 agent/skill/workflow 원본 |
 | Hermes bridge docs | `docs/hermes-skill-bridge.md` | Hermes skill로 변환해서 사용하는 운영 방식 |
 | Agent routing map | `docs/agent-routing-map.md` | 작업 유형별 OMA skill ↔ Codex subagent 매핑 |
+| Obsidian capture policy | `docs/obsidian-capture-policy.md` | Project/Resource/Dictionary 기록 대상과 Hermes 지침 위치 기준 |
 
 ## 왜 이름을 바꿨나
 
@@ -74,6 +75,7 @@ oma doctor
 
 - [Hermes skill bridge](docs/hermes-skill-bridge.md)
 - [Agent routing map](docs/agent-routing-map.md)
+- [Obsidian capture policy](docs/obsidian-capture-policy.md)
 
 ## 라이선스
 

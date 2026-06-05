@@ -38,6 +38,8 @@ Hermes local skill `hermes-agent-team-kr`는 이 저장소를 다음 순서로 �
 ## 승찬님 환경 보정
 
 - Obsidian 작업은 Obsidian 전용 subagent/skill을 우선 고려합니다.
+- Obsidian은 기록 대상만 저장합니다. Hermes 행동 지침/라우팅 규칙은 Obsidian Vault가 아니라 이 저장소 또는 Hermes skill/reference에 둡니다.
+- Obsidian 기록 분리는 `docs/obsidian-capture-policy.md`를 따릅니다: 진행은 `1. Project`, 재사용 지식은 `3. Resource`, 기술 용어는 `4. Archive/Dictionary`.
 - FastAPI는 오케스트레이터, 도메인 로직은 별도 Python 프로젝트로 분리하는 구조를 우선합니다.
 - 공통 모듈 수정 전 영향 범위를 먼저 검토합니다.
 - 완료 보고 전 실제 런타임/테스트/명령 결과를 확인합니다.
