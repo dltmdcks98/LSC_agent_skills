@@ -1,125 +1,80 @@
-<a href="https://github.com/VoltAgent/awesome-codex-subagents">
-  <img width="1500" height="500" alt="awesome-codex-subagents" src="https://github.com/user-attachments/assets/35f56654-e3e7-4023-a7d5-acd5215455de" />
-</a>
+# Hermes Agent Team KR
 
-<br />
+승찬님 환경에서 **Hermes Agent + Codex Subagents + oh-my-agent(OMA)** 를 함께 쓰기 위한 한국어 에이전트 팀 저장소입니다.
 
-<div align="center">
-  <strong>Codex 하위 에이전트 136개를 카테고리별로 정리한 컬렉션</strong>
-</div>
+기존 `codex-subagent-kr`의 Codex TOML subagent 컬렉션을 유지하면서, [`first-fluke/oh-my-agent`](https://github.com/first-fluke/oh-my-agent)의 `.agents/` 기반 역할형 skill/workflow 체계를 병합했습니다.
 
-<br />
+## 구성
 
-<div align="center">
+| 영역 | 경로 | 용도 |
+|---|---|---|
+| Codex Subagents KR | `categories/**/*.toml` | Codex CLI 전역/프로젝트 subagent 설치용 한국어 TOML 에이전트 |
+| OMA portable agents | `.agents/` | Antigravity, Claude Code, Codex CLI, Gemini CLI, Cursor 등에서 공유 가능한 역할형 agent/skill/workflow 원본 |
+| Hermes bridge docs | `docs/hermes-skill-bridge.md` | Hermes skill로 변환해서 사용하는 운영 방식 |
+| Agent routing map | `docs/agent-routing-map.md` | 작업 유형별 OMA skill ↔ Codex subagent 매핑 |
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-![Subagent Count](https://img.shields.io/badge/subagents-137-blue?style=classic)
-[![Last update](https://img.shields.io/github/last-commit/VoltAgent/awesome-codex-subagents?label=Last%20update&style=classic)](https://github.com/VoltAgent/awesome-codex-subagents)
-[![Discord](https://img.shields.io/discord/1361559153780195478.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://s.voltagent.dev/discord)
+## 왜 이름을 바꿨나
 
-</div>
+이 저장소는 더 이상 Codex 전용 한국어 번역 모음만이 아니라, 승찬님이 Hermes에서 실제로 쓰는 **멀티 에이전트 작업 기준 저장소**입니다.
 
-# Awesome Codex Subagents (한국어 안내)
+- Hermes: Mattermost/메모리/MCP/Obsidian/cron/skill 중심 실행 허브
+- OMA `.agents`: 역할형 agent, workflow, checklist의 공용 원본
+- Codex Subagents: 세부 전문 역할을 Codex CLI에 위임할 때 쓰는 TOML 에이전트 풀
 
-이 저장소는 [Codex 하위 에이전트](https://developers.openai.com/codex/subagents) 설정 파일(`.toml`)을 모아둔 컬렉션입니다. 각 에이전트는 특정 역할(백엔드 개발, 코드 리뷰, 인프라 운영, 리서치 등)에 맞춰 설계되어 있습니다.
+따라서 활용 목적에 맞춰 저장소 표기명을 `Hermes Agent Team KR`로 정리했습니다.
 
-## 설치
+## 빠른 사용
 
-Codex 하위 에이전트는 아래 경로 중 하나에 배치해 사용할 수 있습니다.
-
-- 전역 설치: `~/.codex/agents/` (모든 프로젝트에서 사용)
-- 프로젝트 설치: `.codex/agents/` (현재 프로젝트에서만 사용, 전역보다 우선)
-
-### 빠른 설치 스크립트
+### Codex subagent 설치
 
 ```bash
 chmod +x ./install-subagents.sh
 ./install-subagents.sh --global
-```
-
-프로젝트 로컬 설치:
-
-```bash
-./install-subagents.sh --project
-```
-
-특정 카테고리만 설치:
-
-```bash
 ./install-subagents.sh --project --category 04-quality-security
-```
-
-특정 에이전트만 설치:
-
-```bash
 ./install-subagents.sh --agent reviewer.toml --global
 ```
 
-### 수동 설치
+설치 위치:
 
-1. 이 저장소를 클론합니다.
-2. 원하는 `.toml` 파일을 선택합니다.
-3. 파일을 `~/.codex/agents/` 또는 `.codex/agents/`로 복사합니다.
-4. Codex 세션을 새로고침하거나 재시작합니다.
+- 전역: `~/.codex/agents/`
+- 프로젝트: `.codex/agents/`
 
-예시:
+### OMA `.agents` 활용
 
 ```bash
-mkdir -p ~/.codex/agents
-cp categories/01-core-development/backend-developer.toml ~/.codex/agents/
+# OMA CLI를 쓰는 경우
+oma link
+oma doctor
 
-mkdir -p .codex/agents
-cp categories/04-quality-security/reviewer.toml .codex/agents/
+# Hermes에서는 직접 CLI를 먼저 쓰기보다,
+# 등록된 Hermes skill `hermes-agent-team-kr`를 통해 역할 선택/위임 기준으로 사용합니다.
 ```
 
-## 하위 에이전트 파일 구조
+## 권장 Hermes 운영 흐름
 
-각 하위 에이전트는 Codex의 기본 TOML 형식을 사용합니다.
+1. 작업을 받으면 Hermes가 `hermes-agent-team-kr` skill을 기준으로 작업 유형을 분류합니다.
+2. 계획/요구사항은 `oma-pm` 관점으로 먼저 정리합니다.
+3. 구현은 도메인에 따라 `oma-backend`, `oma-frontend`, `oma-mobile`, `oma-db`, `oma-tf-infra` 기준을 적용합니다.
+4. 세부 전문성이 필요하면 `categories/**/*.toml`의 Codex subagent를 선택해 Codex CLI에 위임합니다.
+5. 리뷰/검증은 `oma-qa`, `oma-debug`, `oma-scm`, `oma-docs` 기준으로 마무리합니다.
 
-```toml
-name = "subagent-name"
-description = "When this agent should be invoked"
-model = "gpt-5.3-codex-spark"
-model_reasoning_effort = "medium"
-sandbox_mode = "read-only"
+## 병합 출처
 
-[instructions]
-text = """
-You are a [role description and expertise areas]...
+- Codex subagent KR 기반: 기존 이 저장소의 `categories/**/*.toml`
+- OMA 병합 기준: `first-fluke/oh-my-agent` commit `47803d7`
+- 병합된 OMA 경로: `.agents/`
 
-[Agent-specific checklists, patterns, and guidelines]...
-"""
-```
+## 규모
 
-### 모델 가이드
+- Codex TOML subagents: 137개
+- OMA skills: 31개
+- OMA workflows/rules/agents: `.agents/workflows`, `.agents/rules`, `.agents/agents`
 
-- `gpt-5.4`: 보안 리뷰, 아키텍처 검토, 복잡한 의사결정처럼 깊은 추론이 필요한 작업
-- `gpt-5.3-codex-spark`: 빠른 검색/분석, 경량 조사, 신속한 반복 작업
+## 문서
 
-### 샌드박스 가이드
-
-- `read-only`: 분석/검토 중심 작업 (파일 수정 없음)
-- `workspace-write`: 코드/문서 수정이 필요한 작업
-
-## 카테고리
-
-- [01. Core Development](categories/01-core-development/README.md)
-- [02. Language Specialists](categories/02-language-specialists/README.md)
-- [03. Infrastructure](categories/03-infrastructure/README.md)
-- [04. Quality & Security](categories/04-quality-security/README.md)
-- [05. Data & AI](categories/05-data-ai/README.md)
-- [06. Developer Experience](categories/06-developer-experience/README.md)
-- [07. Specialized Domains](categories/07-specialized-domains/README.md)
-- [08. Business & Product](categories/08-business-product/README.md)
-- [09. Meta Orchestration](categories/09-meta-orchestration/README.md)
-- [10. Research & Analysis](categories/10-research-analysis/README.md)
-
-## 권장 사용 순서
-
-1. 문제 성격(개발/인프라/리뷰/리서치)을 먼저 정합니다.
-2. 해당 카테고리의 README에서 적합한 에이전트를 고릅니다.
-3. `read-only` 에이전트로 먼저 진단하고, 필요할 때만 `workspace-write` 에이전트를 사용합니다.
+- [Hermes skill bridge](docs/hermes-skill-bridge.md)
+- [Agent routing map](docs/agent-routing-map.md)
 
 ## 라이선스
 
-이 저장소는 MIT 라이선스를 따릅니다. 자세한 내용은 [LICENSE](LICENSE)를 확인하세요.
+이 저장소의 기존 Codex subagent 자료는 기존 라이선스를 따릅니다. 병합된 oh-my-agent 자료는 upstream MIT 라이선스와 출처를 유지합니다.
