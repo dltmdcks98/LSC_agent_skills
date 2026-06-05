@@ -42,8 +42,9 @@ Obsidian은 작업 결과와 재사용 지식을 기록하는 곳이지, Hermes�
 
 메타데이터:
 
-- 신규 Resource에는 `project:`를 쓰지 않습니다.
-- 필요하면 `related_projects:`로 출처/관련 프로젝트만 표시합니다.
+- 프로젝트 진행 중 필요한 개념 지식을 `3. Resource`에 작성한다면 frontmatter `project:`에 작업 중인 프로젝트명을 추가합니다.
+- 여러 프로젝트와 직접 관련된 개념이면 `project:`를 리스트로 작성합니다.
+- 프로젝트와 무관한 일반 지식이면 `project:`를 비워두거나 생략합니다.
 
 예시:
 
@@ -61,7 +62,7 @@ Obsidian은 작업 결과와 재사용 지식을 기록하는 곳이지, Hermes�
 - 제품명: Harbor, Obsidian, PostgreSQL
 - 라이브러리/모듈명: argparse
 - 프로토콜/표준명: OCI Registry
-- 메타데이터 필드명: related_projects
+- 메타데이터 필드명: project
 - 일반 기술 용어: Runtime Config, CLI, Frontmatter
 
 기본 형식:
@@ -106,6 +107,7 @@ Obsidian 갱신이 필요한 작업을 마치기 전 확인합니다.
    - 아니오: Project 노트를 만들지 않음
 2. 재사용 가능한 개념이 생겼는가?
    - 예: `3. Resource` 생성/보강
+   - 프로젝트 작업에서 나온 개념이면 Resource frontmatter `project:`에 해당 프로젝트 추가
 3. 새 기술 단어가 나왔는가?
    - 예: `4. Archive/Dictionary` 생성/보강
 4. 지침/행동 규칙 변경인가?
