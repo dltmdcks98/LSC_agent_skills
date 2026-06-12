@@ -1,5 +1,18 @@
 # Agent Routing Map
 
+## Product Manager Skills Reference
+
+PM artifact requests use `docs/product-manager-skills-reference.md` plus `external/Product-Manager-Skills` before improvising.
+
+| User intent | OMA role | Codex subagent candidates | Product-Manager-Skills path |
+|---|---|---|---|
+| PRD 작성 | `oma-pm` | `product-manager`, `business-analyst`, `project-manager` | `external/Product-Manager-Skills/skills/prd-development/SKILL.md` |
+| 기능 우선순위 | `oma-pm` | `product-manager`, `project-manager`, `risk-manager` | `external/Product-Manager-Skills/skills/prioritization-advisor/SKILL.md` |
+| 스토리맵/백로그 맵핑 | `oma-pm`, `oma-coordination` | `product-manager`, `business-analyst`, `scrum-master` | `external/Product-Manager-Skills/skills/user-story-mapping/SKILL.md` |
+| user story 작성/분할 | `oma-pm` | `business-analyst`, `product-manager`, `scrum-master` | `external/Product-Manager-Skills/skills/user-story/SKILL.md`, `external/Product-Manager-Skills/skills/user-story-splitting/SKILL.md` |
+| discovery/문제 정의 | `oma-pm`, `oma-brainstorm` | `ux-researcher`, `market-researcher`, `research-analyst` | `external/Product-Manager-Skills/skills/discovery-process/SKILL.md`, `external/Product-Manager-Skills/skills/problem-framing-canvas/SKILL.md` |
+| 로드맵/워크스트림 계획 | `oma-pm`, `oma-coordination` | `project-manager`, `product-manager`, `scrum-master` | `external/Product-Manager-Skills/skills/roadmap-planning/SKILL.md` |
+
 ## OMA Skills
 
 | OMA skill | 설명 | 경로 |

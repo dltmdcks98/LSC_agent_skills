@@ -9,7 +9,7 @@ Obsidian은 작업 결과와 재사용 지식을 기록하는 곳이지, Hermes�
 - 작업 진행/검증/남은 일 → `1. Project`
 - 재사용 가능한 개념/패턴/운영법 → `3. Resource`
 - 기술 단어/제품명/프로토콜명/필드명/라이브러리명 → `4. Archive/Dictionary`
-- Hermes의 행동 지침/라우팅 규칙/완료 기준 → 이 저장소(`hermes-agent-team-kr`) 또는 Hermes skill/reference
+- Hermes의 행동 지침/라우팅 규칙/완료 기준 → 이 저장소(`LSC_agent_skills`) 또는 Hermes skill/reference
 
 ## `1. Project` 기록 기준
 
@@ -95,7 +95,7 @@ aliases:
 이런 내용은 다음 위치에 둡니다.
 
 - 이 저장소의 `docs/*.md`
-- Hermes skill `hermes-agent-team-kr`
+- Hermes skill `lsc-agent-skills`
 - 필요한 경우 `~/.hermes/skills/.../references/*.md`
 
 ## 완료 전 감사 체크리스트
@@ -111,6 +111,6 @@ Obsidian 갱신이 필요한 작업을 마치기 전 확인합니다.
 3. 새 기술 단어가 나왔는가?
    - 예: `4. Archive/Dictionary` 생성/보강
 4. 지침/행동 규칙 변경인가?
-   - 예: Obsidian이 아니라 `hermes-agent-team-kr` 또는 Hermes skill/reference에 반영
+   - 예: Obsidian이 아니라 `LSC_agent_skills` 또는 Hermes skill/reference에 반영
 5. 대표 노트를 읽어 실제 반영을 확인했는가?
 6. Obsidian 파일을 바꿨다면 LiveSync를 실행했는가?
